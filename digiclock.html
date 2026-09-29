@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Digital Clock</title>
+<style>
+body {
+    background-color: #1a1a1a;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Courier New', Courier, monospace;
+}
+#clock {
+    font-size: 60px;
+    color: #00ffcc;
+    padding: 20px 40px;
+    border: 2px solid #00ffcc;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px #00ffcc;
+    background-color: #222;
+}
+</style>
+</head>
+<body>
+<div id="clock"></div>
+<script>
+function updateClock() {
+    let d = new Date(), h = d.getHours();
+    let ap = h >= 12 ? "PM" : "AM";
+    h = h % 12 || 12;
+    document.getElementById("clock").textContent =
+        `${String(h).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}:${String(d.getSeconds()).padStart(2,"0")} ${ap}`;
+}
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+</body>
+</html>
